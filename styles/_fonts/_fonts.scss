@@ -1,0 +1,13 @@
+@font-face {
+  font-family: 'Odin';
+  src:  url('./OdinRoundedBold.otf') format ('otf'),
+        url('../OdinRoundedBold.eot') format ('eot'),
+        url('../OdinRoundedBold.woff') format('woff');  
+}
+
+$font-base: sans-serif !default;
+$font-Odin: 'Odin' cursive;
+
+.odinFont {
+  font-family: $font-Odin;
+}

@@ -1,5 +1,8 @@
 import Link from 'next/link'
+import Title from './Title'
 
-export default () => (
-    <div></div>
+export default ({colors}) => (
+  <div>
+    <Title colors={colors} />
+  </div>
 )
