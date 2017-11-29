@@ -6,12 +6,12 @@ export default (props) => {
     const { paintings, colors } = props
     return paintings.map(painting => {
       return (
-        <div className='painting-wrapper'>
-          <Painting key={painting.number} painting={painting} colors={colors} />
+        <div key={painting.number} className='painting-wrapper'>
+          <Painting painting={painting} colors={colors} />
           <style jsx>{`
             .painting-wrapper {
-              width:99%;
-              height:99%;
+              width:100%;
+              height:100%;
               display:flex;
               justify-content:center;
               align-items:center;

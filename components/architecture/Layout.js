@@ -10,9 +10,13 @@ export default ({ children, title, colors}) => (
     {/* <style dangerouslySetInnerHTML={{ __html: globalStyles }} /> */}
     <Header colors={colors} />
     <hr />
-    { children }
+    <main>{ children }</main>
     <Footer />
     <style jsx global>{`
+      :root{
+        --title-font: Fredoka One, cursive;
+        --cursive-font: Lobster, cursive;
+      }
       hr{
         width:90vw;
       }
@@ -22,6 +26,22 @@ export default ({ children, title, colors}) => (
       body {
         margin:0!important;
         width:100vw;
+      }
+      .loader-hidden {display:none;}
+      .loader-active {
+        display:block;
+      }
+      .line-spin-fade-loader div {
+        background-color: red;
+        left: 5vw;
+        top: 5vw;
+      }
+      .loader {
+        min-width:100vw;
+        min-height:100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
     `}</style>
   </div>

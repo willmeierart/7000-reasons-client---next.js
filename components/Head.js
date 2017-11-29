@@ -9,13 +9,11 @@ export default (props = initialProps) => {
   const { title, initialScale } = props
   return (
     <Head>
-      <title>{title}</title>
+      <title key='title'>{title}</title>
       <meta charSet='utf-8' />
-      <meta name='viewport' content={`inital-scale=${initialScale || initialProps.initialScale}, width=device-width`} />
-
-      <link href='https://fonts.googleapis.com/css?family=Fredoka+One' rel='stylesheet' />
-      <style jsx>{`
-      `}</style>
+      <meta name='viewport' content={`inital-scale=${initialScale || initialProps.initialScale}, width=device-width`} key='viewport' />
+      <link href='https://fonts.googleapis.com/css?family=Fredoka+One|Lobster' rel='stylesheet' />
+      <link href='https://cdn.bootcss.com/loaders.css/0.1.2/loaders.min.css' rel='stylesheet' />
     </Head>
   )
 }

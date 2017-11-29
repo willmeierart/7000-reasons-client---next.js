@@ -1,10 +1,78 @@
-export default ()=> (
-  <div>
-    <div>7000</div>
-    <style jsx>{`
-      div{
-        color:white
-      }
-    `}</style>
-  </div>
-)
+import { getRandomColor } from '../../lib/_utils'
+
+export default ({ number, colors }) => {
+  const darkColors = colors.filter((color) => !color.light)
+  const lightColors = colors.filter((color) => color.light)  
+  const randColor = getRandomColor(darkColors)
+  const randColor2 = getRandomColor(lightColors).replace(',1)', ',.5)')
+  const randColor3 = getRandomColor(colors).replace(',1)', ',.5)')
+  const randColor4 = getRandomColor(darkColors)
+  
+  console.log(darkColors)
+  return (
+    <div className='outerOuter'>
+      <div className='outerWrapper'>
+        <div className='innerWrapper'>
+          <div>{
+            number.split('').map((num, i) => {
+              const thisNum = i === number.length - 1 ? (
+                <div key={i} className='eachNum'>
+                  <div className='flipIn'>{num}</div>
+                </div>) : (<div key={i} className='eachNum'>
+                  <div>{num}</div>
+                </div>
+              )
+              return thisNum
+            })
+          }</div>
+        </div>
+      </div>
+      <style jsx>{`
+        .outerOuter {
+          width: 100%;
+          height: 20vh;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        .innerWrapper, .outerWrapper, .eachNum {
+          padding:5px;
+          border:1px solid ${randColor4};
+          border-radius: 5px;
+          text-decoration: bold;
+        }
+        .eachNum {
+          font-family: var(--title-font);
+          display: inline-block;
+          margin:1px;
+          width:1em;
+          text-align:center;
+          color:${randColor};
+          background-color:white;
+        }
+        .innerWrapper {
+          padding: 10px;
+          background-color:${randColor2}
+        }
+        .outerWrapper {
+          background-color:${randColor3}
+          border-width:2px;
+        }
+        .flipIn {
+          backface-visibility: visible !important;
+          animation-name: flipIn;
+          animation-duration: 1.5s;
+          animation-iteration-count: 5;
+        }
+        @keyframes flipIn {
+          from {
+            transform: rotate3d(1, 0, 0, 1deg);
+            animation-timing-function:linear;
+          } to {
+            transform: rotate3d(1, 0, 0, -359deg);
+          }
+        }
+      `}</style>
+    </div>
+  )
+}
