@@ -7,6 +7,9 @@ export default class Title extends Component {
   //   super(props)
   //   this.state = { origColor:'black' }
   // }
+  static async getInitialProps ({ colors }) {
+    return colors
+  }
   // componentDidMount () {
   //   this.setState () {() => ({ origColor: })}
   // }

@@ -6,15 +6,16 @@ export default [
   },
   {
     name: 'about',
-    link: '/about/project',
+    link: '/about',
     submenu: [
       {
         name: 'the project',
-        link: '/about/project'
+        link: '/about'
       },
       {
         name: 'the artists',
-        link: '/about/artists'
+        link: '/artist?slug=wes',
+        alias: '/artists/wes'
       }
     ]
   },

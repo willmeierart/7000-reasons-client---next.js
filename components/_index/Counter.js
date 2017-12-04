@@ -57,19 +57,20 @@ export default ({ number, colors }) => {
         .outerWrapper {
           background-color:${randColor3}
           border-width:2px;
+          box-shadow: 0 4px rgba(0,0,0,.5);
         }
         .flipIn {
           backface-visibility: visible !important;
           animation-name: flipIn;
-          animation-duration: 1.5s;
-          animation-iteration-count: 5;
+          animation-duration: 3s;
+          {/* animation-iteration-count: 5; */}
         }
         @keyframes flipIn {
           from {
-            transform: rotate3d(1, 0, 0, 1deg);
+            transform: rotate3d(1, 0, 0, -110deg);
             animation-timing-function:linear;
           } to {
-            transform: rotate3d(1, 0, 0, -359deg);
+            transform: rotate3d(1, 0, 0, 0deg);
           }
         }
       `}</style>

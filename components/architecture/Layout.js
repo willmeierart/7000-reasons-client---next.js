@@ -2,13 +2,13 @@ import Link from 'next/link'
 import Head from '../Head'
 import Header from './Header'
 import Footer from './Footer'
-// import globalStyles from '../../styles/index.scss'
+import globalStyles from '../../styles/index.scss'
 
-export default ({ children, title, colors}) => (
+export default ({ children, title, colors, reasons }) => (
   <div className='layout-wrapper'>
     <Head title={title} />
-    {/* <style dangerouslySetInnerHTML={{ __html: globalStyles }} /> */}
-    <Header colors={colors} />
+    <style dangerouslySetInnerHTML={{ __html: globalStyles }} />
+    <Header reasons={reasons} colors={colors} />
     <hr />
     <main>{ children }</main>
     <Footer />

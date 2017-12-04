@@ -1,12 +1,13 @@
 import { getRandomColor } from '../../lib/_utils'
+import ReasonTo from './ReasonTo'
 
-export default ({ colors }) => {
+export default ({ colors, reasons }) => {
   const splitShimmer = (phrase) => {
     return phrase.split('').map((letter, i) => {
       const randomColor = getRandomColor(colors)
       return (
-        <span>
-          <span key={i} className='split-span-letter' >
+        <span key={i}>
+          <span className='split-span-letter' >
             {letter}
           </span>
           <style jsx>{`
@@ -32,7 +33,8 @@ export default ({ colors }) => {
   return (
     <div>
       <div className='container'>
-        <div className='by'>by</div>
+        <ReasonTo reasons={reasons} colors={colors} />
+        <div className='prepo'>by</div>
         <div className='names'>
           {splitShimmer('Jonathan Saiz & Wes Magyar')}
           {/* <div className='name'>Jonathan Saiz</div>
@@ -41,7 +43,7 @@ export default ({ colors }) => {
         </div>
       </div>
       <style jsx>{`
-      .by {
+      .prepo {
         margin-bottom:1em;
       }
       .container {
@@ -62,5 +64,5 @@ export default ({ colors }) => {
       }
     `}</style>
     </div>
-  ) 
+  )
 }

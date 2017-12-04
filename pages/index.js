@@ -4,7 +4,7 @@ import Head from 'next/head'
 
 import withData from '../lib/withData'
 import { allFadeColors, allPaintings, allCountdowns, allShiftingMessages } from '../lib/queries'
-import { formatColors, checkAllQueriesError, checkAllQueriesLoading } from '../lib/_utils'
+import { formatColors, checkAllQueriesError } from '../lib/_utils'
 
 import Layout from '../components/architecture/Layout'
 import Counter from '../components/_index/Counter'
@@ -26,7 +26,7 @@ const HomePage = ({ url: { pathname }, allPaintings, allFadeColors, allShiftingM
   // ) : null
 
   return (
-    <Layout colors={colors} title='Home'>
+    <Layout reasons={allShiftingMessages.allShiftingMessages} colors={colors} title='Home'>
       {(allPaintings.loading || allFadeColors.loading || allCountdowns.loading || allShiftingMessages.loading) ? (
         <div className='wrapper'>
           <Loader className='loader' type='line-spin-fade-loader' active />

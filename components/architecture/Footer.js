@@ -1,6 +1,6 @@
 export default () => ( 
   <div className='wrapper'>
-    <div className='copy'>© 2018 Jonathan Saiz & Wes Magyar // site by Will Meier</div>
+    <div className='copy'>© 2018</div>
     <style jsx>{`
       .wrapper {
         width: 100%;

@@ -8,6 +8,9 @@ export default class Menu extends Component {
     super(props)
     this.state = { hoveredSubItems: null }
   }
+  static async getInitialProps ({ colors }) {
+    return colors
+  }
   showSubItem (i) {
     this.setState(() => (
       {hoveredSubItems: i}
@@ -31,7 +34,7 @@ export default class Menu extends Component {
             <ul className='submenuList'>{
               item.submenu.map((sub, i) => (
                 <li key={sub.name} className='submenuItem'>
-                  <Link href={sub.link}><a>{ sub.name }</a></Link>
+                  <Link as={sub.alias || null} href={sub.link}><a>{ sub.name }</a></Link>
                 </li>
               ))
             }</ul>
