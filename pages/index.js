@@ -3,31 +3,23 @@ import Loader from 'react-loaders'
 import Head from 'next/head'
 
 import withData from '../lib/withData'
-import { allFadeColors, allPaintings, allCountdowns, allShiftingMessages } from '../lib/queries'
+import { allFadeColors, allPaintings, allCountdowns } from '../lib/queries'
 import { formatColors, checkAllQueriesError } from '../lib/_utils'
 
 import Layout from '../components/architecture/Layout'
 import Counter from '../components/_index/Counter'
 import PaintingsGrid from '../components/_index/PaintingsGrid'
 
-const HomePage = ({ url: { pathname }, allPaintings, allFadeColors, allShiftingMessages, allCountdowns }) => {
-  const queries = ['allPaintings', 'allFadeColors', 'allShiftingMessages', 'allCountdowns']
-
+const HomePage = ({ url: { pathname }, allPaintings, allFadeColors, allCountdowns }) => {
+  const queries = ['allPaintings', 'allFadeColors', 'allCountdowns']
   checkAllQueriesError(queries)
 
   const colors = formatColors(allFadeColors.allFadeColors)
   const paintings = allPaintings.allPaintings
 
-  // const content = allCountdowns.allCountdowns[0] ? (
-  //   <div>
-  //     <Counter number={allCountdowns.allCountdowns[0].remaining || null} />
-  //     <PaintingsGrid paintings={paintings} colors={colors} />
-  //   </div>
-  // ) : null
-
   return (
-    <Layout reasons={allShiftingMessages.allShiftingMessages} colors={colors} title='Home'>
-      {(allPaintings.loading || allFadeColors.loading || allCountdowns.loading || allShiftingMessages.loading) ? (
+    <Layout colors={colors} title='Home'>
+      {(allPaintings.loading || allFadeColors.loading || allCountdowns.loading) ? (
         <div className='wrapper'>
           <Loader className='loader' type='line-spin-fade-loader' active />
           <style jsx>{`
@@ -58,7 +50,6 @@ const HomePage = ({ url: { pathname }, allPaintings, allFadeColors, allShiftingM
 export default withData(
   compose(
     graphql(allCountdowns, { name: 'allCountdowns' }),
-    graphql(allShiftingMessages, { name: 'allShiftingMessages' }),
     graphql(allFadeColors, { name: 'allFadeColors' }),
     graphql(allPaintings, { name: 'allPaintings' })
   )(HomePage)

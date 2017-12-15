@@ -29,12 +29,12 @@ export default class Menu extends Component {
       return (
         <li key={item.name} className='menuItem' onMouseEnter={() => this.showSubItem(i)} onMouseLeave={() => this.hideSubItem()}>
           {(this.state.hoveredSubItems !== i || item.submenu.length === 0) &&
-            <Link href={item.link}><a>{ item.name }</a></Link>
+            <Link prefetch href={item.link}><a>{ item.name }</a></Link>
           }{ item.submenu.length > 0 && this.state.hoveredSubItems === i &&
             <ul className='submenuList'>{
               item.submenu.map((sub, i) => (
                 <li key={sub.name} className='submenuItem'>
-                  <Link as={sub.alias || null} href={sub.link}><a>{ sub.name }</a></Link>
+                  <Link prefetch as={sub.alias || sub.link} href={sub.link}><a>{ sub.name }</a></Link>
                 </li>
               ))
             }</ul>

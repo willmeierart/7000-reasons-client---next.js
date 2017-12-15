@@ -4,7 +4,7 @@ import { getRandomColor, binder } from '../../lib/_utils'
 export default class ReasonTo extends Component {
   constructor (props) {
     super(props)
-    this.state = { currentReason: 'be', randomColor: 'rgba(0,0,0,1)', randomInterval: 1000 }
+    this.state = { currentReason: 'be', randomColor: 'rgba(0,0,0,1)', randomInterval: 1000, number: 1 }
     binder(this, ['tagSwitcha'])
   }
   componentDidMount () {
@@ -20,7 +20,8 @@ export default class ReasonTo extends Component {
         {
           currentReason: reasons[i].headline,
           randomColor: (darkColors[i].color || color),
-          randomInterval: randomInt
+          randomInterval: randomInt,
+          number: Math.floor(Math.random() * 7000)
         }
       ))
     }
@@ -35,7 +36,7 @@ export default class ReasonTo extends Component {
   render () {
     return (
       <div className='container'>
-        <div className='reason'>to { this.state.currentReason }</div>
+        <div className='reason'> #{ this.state.number }: to { this.state.currentReason }</div>
         <style jsx>{`
           .prepo {
             margin:1em;
@@ -57,14 +58,14 @@ export default class ReasonTo extends Component {
             animation: fade-reasons ${this.state.randomInterval / 1000}s linear;
           }
           @keyframes fade-reasons {
-              from {
-                opacity:0;
-              } 50% {
-                opacity:1;
-              } to {
-                opacity:0;
-              }
+            from {
+              opacity:0;
+            } 50% {
+              opacity:1;
+            } to {
+              opacity:0;
             }
+          }
         `}</style>
       </div>
     )

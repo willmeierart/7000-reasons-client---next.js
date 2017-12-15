@@ -36,7 +36,7 @@ export default ({ colors, reasons }) => {
         <ReasonTo reasons={reasons} colors={colors} />
         <div className='prepo'>by</div>
         <div className='names'>
-          {splitShimmer('Jonathan Saiz & Wes Magyar')}
+          {splitShimmer('Wes Magyar & Jonathan Saiz')}
           {/* <div className='name'>Jonathan Saiz</div>
           <div className='and'>&nbsp; & &nbsp;</div>
           <div className='name'>Wes Magyar</div> */}
