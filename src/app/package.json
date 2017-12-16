@@ -2,28 +2,16 @@
   "name": "7000-reasons",
   "version": "1.0.0",
   "description": "artist experiment",
+  "author": "Will Meier",
+  "license": "ISC",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "NODE_ENV=development node server/index.js",
-    "prebuild": "rimraf \"src/functions\"",
-    "build": "npm run build-functions && npm run build-app",
-    "postbuild": "cd \"src/functions\" && npm i",
-    "build-app": "cd \"src/app\" && npm run build",
-    "build-functions": "babel \"src/functions\" --out-dir \"src/functions\" --copy-files --ignore \"node_modules\"",
-    "predeploy": "npm run build",
+    "build": "next build",
     "deploy": "firebase deploy",
     "format": "prettier --write \"**/**{.js, .json}\"",
-    "postinstall": "npm run install-app && npm run install-functions",
-    "install-app": "cd \"src/app\" && npm i",
-    "install-functions": "cd \"src/functions\" && npm i",
-    "next": "cd \"src/app\" && npm run dev",
-    "preserve": "npm run build",
-    "serve": "firebase serve",
-    "start": "NODE_ENV=production node server/index.js",
-    "export": "next build && next export"
+    "start": "NODE_ENV=production node server/index.js"
   },
-  "author": "Will Meier",
-  "license": "ISC",
   "standard": {
     "parser": "babel-eslint",
     "ignore": [
@@ -55,7 +43,6 @@
     "react-apollo": "^2.0.1",
     "react-dom": "^16.1.1",
     "react-loaders": "^3.0.1",
-    "rimraf": "^2.6.2",
     "sass-loader": "^6.0.6"
   },
   "devDependencies": {

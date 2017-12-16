@@ -9,7 +9,7 @@ import { formatColors, checkAllQueriesError, getRandomColor } from '../lib/_util
 import Layout from '../components/architecture/Layout'
 import PriceCounter from '../components/_shop/PriceCounter'
 import ExamplesFader from '../components/_shop/ExamplesFader'
-import CheckoutForm from '../components/_shop/CheckoutForm'
+// import CheckoutForm from '../components/_shop/CheckoutForm'
 
 const ShopPage = ({ url: { pathname }, allFadeColors, allCheckoutPages }) => {
   const queries = ['allCheckoutPages', 'allFadeColors']
