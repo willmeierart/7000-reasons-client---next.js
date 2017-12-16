@@ -4,10 +4,11 @@
   "description": "artist experiment",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node server/index.js",
+    "dev": "NODE_ENV=development node server/index.js",
     "next": "next",
     "build": "next build",
-    "start": "NODE_ENV=production node server/index.js"
+    "start": "NODE_ENV=production node server/index.js",
+    "export": "next build && next export"
   },
   "author": "Will Meier",
   "license": "ISC",

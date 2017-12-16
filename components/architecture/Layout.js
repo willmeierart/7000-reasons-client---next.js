@@ -2,11 +2,9 @@ import { graphql, compose } from 'react-apollo'
 import Loader from 'react-loaders'
 import withData from '../../lib/withData'
 import { allFontses, allShiftingMessages } from '../../lib/queries'
-// import Link from 'next/link'
 import Head from '../Head'
 import Header from './Header'
 import Footer from './Footer'
-// import globalStyles from '../../styles/index.scss'
 
 const Layout = ({ children, title, colors, allFontses, allShiftingMessages }) => {
   const fontArr = allFontses.loading || !allFontses.allFontses ? [] : [allFontses.allFontses[0].headerFont, allFontses.allFontses[0].secondaryDisplayFont, allFontses.allFontses[0].bodyFont]
@@ -34,7 +32,6 @@ const Layout = ({ children, title, colors, allFontses, allShiftingMessages }) =>
   ) : (
     <div className='layout-wrapper'>
       <Head fonts={appFonts} title={title} />
-      {/* <style dangerouslySetInnerHTML={{ __html: globalStyles }} /> */}
       <Header reasons={reasons} colors={colors} />
       <hr />
       <main>{ children }</main>

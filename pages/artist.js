@@ -95,10 +95,14 @@ const ArtistPage = ({ url, allArtists, allFadeColors }) => {
   // const activeArtist = allArtists.allArtists ? allArtists.allArtists.filter((artist) => isActive(artist.slug))[0] : null
   // console.log(activeArtist)
   // const { bio, bodiesOfWork, personalPhotos } = activeArtist
-  const splitProBio = wordSplitta(activeArtist.professionalBio.replace(/(<([^>]+)>)/ig, '').replace(/&nbsp;/g, ' '))
-  const splitPersonalBio = wordSplitta(activeArtist.personalBio.replace(/(<([^>]+)>)/ig, '').replace(/&nbsp;/g, ' '))
-  
-  console.log(activeArtist.professionalBio)
+
+  // const splitProBio = wordSplitta(activeArtist.professionalBio.replace(/(<([^>]+)>)/ig, '').replace(/&nbsp;/g, ' ')) || ''
+  // const splitPersonalBio = wordSplitta(activeArtist.personalBio.replace(/(<([^>]+)>)/ig, '').replace(/&nbsp;/g, ' ')) || ''
+  const splitProBio = ''
+  const splitPersonalBio = ''
+
+
+  console.log(activeArtist)
 
   return (
     <Layout colors={colors} title='About the Project'>
