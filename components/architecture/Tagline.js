@@ -1,7 +1,7 @@
 import { getRandomColor } from '../../lib/_utils'
 import ReasonTo from './ReasonTo'
 
-export default ({ colors, reasons }) => {
+const Tagline = ({ colors, reasons }) => {
   const splitShimmer = (phrase) => {
     return phrase.split('').map((letter, i) => {
       const randomColor = getRandomColor(colors)
@@ -66,3 +66,5 @@ export default ({ colors, reasons }) => {
     </div>
   )
 }
+
+export default Tagline

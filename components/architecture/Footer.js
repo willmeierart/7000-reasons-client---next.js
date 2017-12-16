@@ -1,4 +1,4 @@
-export default () => ( 
+const Footer = () => ( 
   <div className='wrapper'>
     <div className='copy'>© 2018</div>
     <style jsx>{`
@@ -12,3 +12,5 @@ export default () => (
     `}</style>
   </div>
 )
+
+export default Footer

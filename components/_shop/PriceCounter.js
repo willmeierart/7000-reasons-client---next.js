@@ -1,6 +1,6 @@
 import { getRandomColor } from '../../lib/_utils'
 
-export default ({ price, colors }) => {
+const PriceCounter = ({ price, colors }) => {
   const darkColors = colors.filter((color) => !color.light)
   const lightColors = colors.filter((color) => color.light)
   const randColor = getRandomColor(darkColors)
@@ -80,3 +80,5 @@ export default ({ price, colors }) => {
     </div>
   )
 }
+
+export default PriceCounter

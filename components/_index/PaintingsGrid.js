@@ -1,7 +1,7 @@
 import React from 'react'
 import Painting from './Painting'
 
-export default (props) => {
+const PaintingsGrid = (props) => {
   const renderGrid = () => {
     const { paintings, colors } = props
     return paintings.map(painting => {
@@ -35,3 +35,5 @@ export default (props) => {
     </div>
   )
 }
+
+export default PaintingsGrid

@@ -1,6 +1,6 @@
 import Menu from './Menu'
 
-export default ({ colors }) => (
+const NavBar = ({ colors }) => (
   <div className='wrapper'>
     <Menu colors={colors} />
     <style jsx>{`
@@ -11,3 +11,5 @@ export default ({ colors }) => (
     `}</style>
   </div>
 )
+
+export default NavBar

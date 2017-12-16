@@ -1,9 +1,8 @@
-import Link from 'next/link'
 import Title from './Title'
 import Tagline from './Tagline'
 import NavBar from './NavBar'
 
-export default ({colors, reasons}) => (
+const Header = ({colors, reasons}) => (
   <div>
     <Title colors={colors} />
     <Tagline reasons={reasons} colors={colors} />
@@ -11,3 +10,5 @@ export default ({colors, reasons}) => (
     <NavBar colors={colors} />
   </div>
 )
+
+export default Header

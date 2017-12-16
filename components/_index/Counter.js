@@ -1,6 +1,6 @@
 import { getRandomColor } from '../../lib/_utils'
 
-export default ({ number, colors }) => {
+const Counter = ({ number, colors }) => {
   const darkColors = colors.filter((color) => !color.light)
   const lightColors = colors.filter((color) => color.light)  
   const randColor = getRandomColor(darkColors)
@@ -77,3 +77,5 @@ export default ({ number, colors }) => {
     </div>
   )
 }
+
+export default Counter

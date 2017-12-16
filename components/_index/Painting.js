@@ -1,4 +1,4 @@
-export default ({ painting, colors }) => {
+const Painting = ({ painting, colors }) => {
   const randomIndex = Math.floor(Math.random() * colors.length)
   const randomColor = colors[randomIndex].rgba
   return (
@@ -66,3 +66,5 @@ export default ({ painting, colors }) => {
     </div>
   )
 }
+
+export default Painting

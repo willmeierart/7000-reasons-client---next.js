@@ -64,7 +64,6 @@ export default class Title extends Component {
         `}</style>
         </a></Link>
       </div>
-      
     )
   }
 }
