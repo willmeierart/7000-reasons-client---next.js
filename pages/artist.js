@@ -150,7 +150,7 @@ const ArtistPage = ({ url, allArtists, allFadeColors }) => {
               </div>
             </div>
             <div className='work-images'>
-              <div className='website' onMouseOver={(e) => colorShimma(e)}>{ siteSplitta(activeArtist.website.replace(/(http|s:\/\/www\.|\/)/g, '')) }</div>
+              <div className='website' onMouseOver={(e) => colorShimma(e)}>{ siteSplitta(activeArtist.website.replace(/(http|s|:\/\/www\.|\/)/g, '')) }</div>
               <div className='work-img-wrapper'>
                 <div className='img-screen' /><img src={activeArtist.workPhotos[0].url} />
               </div>
