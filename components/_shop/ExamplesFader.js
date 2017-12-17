@@ -14,7 +14,7 @@ export default class ExamplesFader extends Component {
     const { images } = this.props
     let i = 0
     return setInterval(() => {
-      const src = images[i] ? images[i].url : ''
+      const src = images[i] ? images[i].url : ''  
       i < images.length - 1 ? i++ : i = 0
       console.log(i)
       console.log(src)
