@@ -15,6 +15,12 @@
       {
         "extensions": ["css$", "scss$"]
       }
+    ],
+    [
+      "styled-jsx/babel",
+      {
+        "optimizeForSpeed": true
+      }
     ]
   ],
   "presets": ["next/babel"],

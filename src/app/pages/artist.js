@@ -96,10 +96,10 @@ const ArtistPage = ({ url, allArtists, allFadeColors }) => {
   // console.log(activeArtist)
   // const { bio, bodiesOfWork, personalPhotos } = activeArtist
 
-  // const splitProBio = wordSplitta(activeArtist.professionalBio.replace(/(<([^>]+)>)/ig, '').replace(/&nbsp;/g, ' ')) || ''
-  // const splitPersonalBio = wordSplitta(activeArtist.personalBio.replace(/(<([^>]+)>)/ig, '').replace(/&nbsp;/g, ' ')) || ''
-  const splitProBio = ''
-  const splitPersonalBio = ''
+  const splitProBio = wordSplitta(activeArtist.professionalBio.replace(/(<([^>]+)>)/ig, '').replace(/&nbsp;/g, ' ')) || ''
+  const splitPersonalBio = wordSplitta(activeArtist.personalBio.replace(/(<([^>]+)>)/ig, '').replace(/&nbsp;/g, ' ')) || ''
+  // const splitProBio = ''
+  // const splitPersonalBio = ''
 
 
   console.log(activeArtist)
@@ -150,7 +150,7 @@ const ArtistPage = ({ url, allArtists, allFadeColors }) => {
               </div>
             </div>
             <div className='work-images'>
-              <div className='website' onMouseOver={(e) => colorShimma(e)}>{ siteSplitta(activeArtist.website.replace(/(http|s:\/\/www\.|\/)/g, '')) }</div>
+              <div className='website' onMouseOver={(e) => colorShimma(e)}>{ siteSplitta(activeArtist.website.replace(/(http|s|:\/\/www\.|\/)/g, '')) }</div>
               <div className='work-img-wrapper'>
                 <div className='img-screen' /><img src={activeArtist.workPhotos[0].url} />
               </div>

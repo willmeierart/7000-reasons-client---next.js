@@ -4,7 +4,7 @@
   "description": "artist experiment",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "NODE_ENV=development node server/index.js",
+    "dev": "NODE_ENV=development node src/app/server/index.js",
     "prebuild": "rimraf \"dist/functions\"",
     "build": "npm run build-functions && npm run build-app",
     "postbuild": "cd \"dist/functions\" && npm i",

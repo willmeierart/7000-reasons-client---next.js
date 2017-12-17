@@ -15,7 +15,7 @@
       {
         "extensions": ["css$", "scss$"]
       }
-    ]
+    ]  
   ],
   "presets": ["next/babel"],
   "ignore": [],
