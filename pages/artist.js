@@ -98,9 +98,6 @@ const ArtistPage = ({ url, allArtists, allFadeColors }) => {
 
   const splitProBio = wordSplitta(activeArtist.professionalBio.replace(/(<([^>]+)>)/ig, '').replace(/&nbsp;/g, ' ')) || ''
   const splitPersonalBio = wordSplitta(activeArtist.personalBio.replace(/(<([^>]+)>)/ig, '').replace(/&nbsp;/g, ' ')) || ''
-  // const splitProBio = ''
-  // const splitPersonalBio = ''
-
 
   console.log(activeArtist)
 
