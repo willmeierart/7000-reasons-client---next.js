@@ -263,6 +263,7 @@ const ArtistPage = ({ url, allArtists, allFadeColors }) => {
               position: relative;
               display: flex;
               width:100%;
+              margin-top:2vw;
              }
             .work-img-wrapper {
               position:relative;
