@@ -96,10 +96,10 @@ const ArtistPage = ({ url, allArtists, allFadeColors }) => {
   // console.log(activeArtist)
   // const { bio, bodiesOfWork, personalPhotos } = activeArtist
 
-  // const splitProBio = wordSplitta(activeArtist.professionalBio.replace(/(<([^>]+)>)/ig, '').replace(/&nbsp;/g, ' ')) || ''
-  // const splitPersonalBio = wordSplitta(activeArtist.personalBio.replace(/(<([^>]+)>)/ig, '').replace(/&nbsp;/g, ' ')) || ''
-  const splitProBio = ''
-  const splitPersonalBio = ''
+  const splitProBio = wordSplitta(activeArtist.professionalBio.replace(/(<([^>]+)>)/ig, '').replace(/&nbsp;/g, ' ')) || ''
+  const splitPersonalBio = wordSplitta(activeArtist.personalBio.replace(/(<([^>]+)>)/ig, '').replace(/&nbsp;/g, ' ')) || ''
+  // const splitProBio = ''
+  // const splitPersonalBio = ''
 
 
   console.log(activeArtist)
