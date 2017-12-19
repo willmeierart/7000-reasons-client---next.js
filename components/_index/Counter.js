@@ -7,8 +7,8 @@ const Counter = ({ number, colors }) => {
   const randColor2 = getRandomColor(lightColors).replace(',1)', ',.5)')
   const randColor3 = getRandomColor(colors).replace(',1)', ',.5)')
   const randColor4 = getRandomColor(darkColors)
-  
-  console.log(darkColors)
+
+  // console.log(darkColors)
   return (
     <div className='outerOuter'>
       <div className='outerWrapper'>
