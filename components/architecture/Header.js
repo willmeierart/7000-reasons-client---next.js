@@ -7,7 +7,7 @@ const Header = ({colors, reasons}) => (
     <Title colors={colors} />
     <Tagline reasons={reasons} colors={colors} />
     <hr />
-    <NavBar colors={colors} />
+    {/* <NavBar colors={colors} /> */}
   </div>
 )
 
