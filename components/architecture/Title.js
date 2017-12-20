@@ -26,6 +26,11 @@ export default class Title extends Component {
               transition: color 1s ease;
               font-size: 3em;
             }
+            @media (max-width: 500px){
+              .titleLetter {
+                font-size: 2.5em;
+              }
+            }
           `}</style>
         </span>
       )
@@ -54,14 +59,14 @@ export default class Title extends Component {
         <Link href='/' ><a>
           {this.titleSplitta()}
           <style jsx>{`
-            width:80vw;
-            margin:4vw 10vw 2vw 10vw;
-            display:flex; justify-content:space-around; align-items: center;
-          a {
-            text-decoration: none;
-            color: unset;
-          }
-        `}</style>
+              width:80vw;
+              margin:4vw 10vw 2vw 10vw;
+              display:flex; justify-content:space-around; align-items: center;
+            a {
+              text-decoration: none;
+              color: unset;
+            }
+          `}</style>
         </a></Link>
       </div>
     )
