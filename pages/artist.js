@@ -77,6 +77,7 @@ const ArtistPage = ({ url, allArtists, allFadeColors }) => {
               font-family: var(--cursive-font);
               text-decoration: none;
               color: black;
+              white-space: nowrap;
             }
             a:hover {
               color: ${randomDark2}
@@ -86,6 +87,11 @@ const ArtistPage = ({ url, allArtists, allFadeColors }) => {
               {/* font-size: 1.25em;ip */}
               color: ${randomDark};     
               {/* text-decoration:underline;          */}
+            }
+            @media(max-width:500px){
+              a {
+                font-size: .75em;
+              }
             }
           `}</style>
         </div>
@@ -150,7 +156,7 @@ const ArtistPage = ({ url, allArtists, allFadeColors }) => {
               </div>
             </div>
             <div className='work-images'>
-              <div className='website' onMouseOver={(e) => colorShimma(e)}>{ siteSplitta(activeArtist.website.replace(/(http|s|:\/\/www\.|\/)/g, '')) }</div>
+              <div className='website' onMouseOver={(e) => colorShimma(e)}>{ siteSplitta(activeArtist.website.replace(/(https?:\/\/www\.|\/)/g, '')) }</div>
               <div className='work-img-wrapper'>
                 <div className='img-screen' /><img src={activeArtist.workPhotos[0].url} />
               </div>
@@ -292,6 +298,11 @@ const ArtistPage = ({ url, allArtists, allFadeColors }) => {
               -webkit-background-clip: text; */}
               z-index: 3;
               {/* background: none; */}
+            }
+            @media(max-width: 500px) {
+              .website {
+                font-size: .75em;
+              }
             }
           `}</style>
         </div>

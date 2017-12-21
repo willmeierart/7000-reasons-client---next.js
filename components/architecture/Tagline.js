@@ -36,7 +36,7 @@ const Tagline = ({ colors, reasons }) => {
         <ReasonTo reasons={reasons} colors={colors} />
         <div className='prepo'>by</div>
         <div className='names'>
-          <div clasName='name'>
+          <div className='name'>
             { splitShimmer('Wes Magyar') }
           </div>
           <span>&nbsp; &  &nbsp;</span>

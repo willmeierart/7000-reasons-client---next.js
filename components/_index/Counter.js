@@ -34,6 +34,7 @@ const Counter = ({ number, colors }) => {
           display: flex;
           justify-content: center;
           align-items: center;
+          margin-bottom: 1em;
         }
         .innerWrapper, .outerWrapper, .eachNum {
           padding:5px;
@@ -44,6 +45,7 @@ const Counter = ({ number, colors }) => {
         .eachNum {
           font-family: var(--title-font);
           display: inline-block;
+          font-size:3em;
           margin:1px;
           width:1em;
           text-align:center;

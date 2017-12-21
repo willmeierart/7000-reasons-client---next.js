@@ -65,7 +65,9 @@ const ShopPage = ({ url: { pathname }, allFadeColors, allCheckoutPages }) => {
               </div>
             </div>
             <h1>LET'S DO THIS!</h1>
-            <img src='/static/paypal.png' />
+            <div className='paypal-wrapper'>
+              <img src='/static/paypal.png' />
+            </div>
             {/* <CheckoutForm colors={colors} /> */}
           </div>
           <style jsx>{`
@@ -110,6 +112,20 @@ const ShopPage = ({ url: { pathname }, allFadeColors, allCheckoutPages }) => {
             }
             .fader-bad {
               grid-area: images2;
+            }
+            .paypal-wrapper {
+              display: flex;
+              width: 80vw;
+              justify-content: center;
+            }
+            @media(max-width:600px){
+              .instructions-section {
+                display: flex;
+                flex-direction: column;
+              }
+              .instructions {
+                padding-right: 0;
+              }
             }
           `}</style>
         </div>
