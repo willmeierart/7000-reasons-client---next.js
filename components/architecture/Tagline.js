@@ -37,11 +37,15 @@ const Tagline = ({ colors, reasons }) => {
         <div className='prepo'>by</div>
         <div className='names'>
           <div className='name'>
-            { splitShimmer('Wes Magyar') }
+            <a href='https://www.wesmagyar.com/' target='_blank'>
+              { splitShimmer('Wes Magyar') }
+            </a>
           </div>
           <span>&nbsp; &  &nbsp;</span>
           <div className='name'>
-            { splitShimmer('Jonathan  Saiz') }
+            <a href='http://www.jonathansaiz.com/' target='_blank'>
+              { splitShimmer('Jonathan  Saiz') }
+            </a>
           </div>
           {/* <div className='name'>Jonathan Saiz</div>
           <div className='and'>&nbsp; & &nbsp;</div>
@@ -49,7 +53,10 @@ const Tagline = ({ colors, reasons }) => {
         </div>
       </div>
       <style jsx>{`
-        
+        a {
+          color: inherit;
+          text-decoration: none;
+        }
         .prepo {
           margin-bottom:1em;
         }
