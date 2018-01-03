@@ -12,10 +12,10 @@ const Header = ({colors, reasons}) => {
       <Title colors={colors} />
       <Tagline reasons={reasons} colors={colors} />
       <hr />
-      {/* <NavBar colors={colors} /> */}
-      <div className='temp-tag'>
+      <NavBar colors={colors} />
+      {/* <div className='temp-tag'>
         <em>send us an email at <a href='mailto:7000reasonsproject@gmail.com' target='_blank'>7000reasonsproject@gmail.com</a> and we'll let you know when we get started in January 2018!</em>
-      </div>
+      </div> */}
       <style jsx>{`
         .temp-tag {
           width: 80vw;
