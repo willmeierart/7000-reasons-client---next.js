@@ -13,7 +13,6 @@ export default class ReasonTo extends Component {
   tagSwitcha () {
     const theseColors = this.props.colors
     const darkColors = theseColors.filter((color) => !color.light)
-    console.log(darkColors);
     const reasons = this.props.reasons || ['']
     const switchEm = (color) => {
       const randomInt = (Math.floor(Math.random() * 10) + 30) * 100

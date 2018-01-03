@@ -3,7 +3,6 @@ import shuffle from 'shuffle-array'
 import Painting from './Painting'
 
 const PaintingsGrid = ({ paintings, colors }) => {
-  console.log(paintings)
   // const shuffleArr = (arr) => {
   //   for (let i = arr.length - 1; i > 0; i--) {
   //     let j = Math.floor(Math.random() * (i + 1))
@@ -15,7 +14,6 @@ const PaintingsGrid = ({ paintings, colors }) => {
   // }
   const keys = shuffle(Object.keys(paintings))
   const shuffledPaintings = keys.map(key => paintings[key])
-  console.log(shuffledPaintings)
   const renderGrid = () => {
     return shuffledPaintings.map(painting => {
       return (

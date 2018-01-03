@@ -51,7 +51,7 @@ const AboutPage = ({ url, allProjectInfoes, allFadeColors }) => {
           </div>
           <div className='shoplink'>
             <div><i>want to partcipate?</i></div>
-            <Link preload href='/shop'><a><b>FIND OUT HOW</b></a></Link>
+            <Link prefetch href='/shop'><a><b>FIND OUT HOW</b></a></Link>
           </div>
           <hr className='b' />
           <style jsx>{`
