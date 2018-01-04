@@ -107,8 +107,7 @@ const ArtistPage = ({ url, allArtists, allFadeColors }) => {
   // const splitProBio = ''
   // const splitPersonalBio = ''
 
-
-  console.log(activeArtist)
+  // console.log(activeArtist)
 
   return (
     <Layout colors={colors} title='About the Project'>
@@ -228,13 +227,13 @@ const ArtistPage = ({ url, allArtists, allFadeColors }) => {
               width: 60vw;
               margin: 2vw;
               margin-top: 4vw;
-              filter: sepia(100%);
+              filter: ${activeArtist.slug === 'wes' ? 'sepia(100%) hue-rotate(180deg)' : 'sepia(100%) hue-rotate(90deg)'};
               box-shadow: 0 0 30px ${randomDark};
               transition: filter 1s ease-out;
               border-radius: 2px;           
             }
             .header-img img:hover {
-              filter: sepia(0%);
+              filter: ${activeArtist.slug === 'wes' ? 'sepia(0%) hue-rotate(360deg)' : 'sepia(0%) hue-rotate(0deg)'};
             }
             .personal-bio-wrapper {
               {/* padding-top: 6vw; */}

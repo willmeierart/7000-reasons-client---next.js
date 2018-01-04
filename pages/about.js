@@ -42,7 +42,7 @@ const AboutPage = ({ url, allProjectInfoes, allFadeColors }) => {
           <div className='header-title'> About the Project </div>
           <div className='main-wrapper'>
             <div className='header-img-container'>
-              <img src='http://lorempixel.com/output/fashion-q-c-1158-480-4.jpg' />
+              <img src={allProjectInfoes.allProjectInfoes[0].descriptionPhotos[0].url} />
             </div>
             <hr className='a' />
             <div className='description' dangerouslySetInnerHTML={{ __html: description }} />
