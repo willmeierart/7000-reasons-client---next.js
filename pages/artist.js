@@ -296,7 +296,12 @@ const ArtistPage = ({ url, allArtists, allFadeColors }) => {
               {/* -webkit-text-fill-color: transparent;              
               -webkit-background-clip: text; */}
               z-index: 3;
+              mix-blend-mode: overlay;
               {/* background: none; */}
+            }
+            .website:hover {
+              mix-blend-mode: initial;
+              transition: .5s mix-blend-mode;
             }
             @media(max-width: 500px) {
               .website {
