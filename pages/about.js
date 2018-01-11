@@ -18,6 +18,34 @@ const AboutPage = ({ url, allProjectInfoes, allFadeColors }) => {
   const randomDark = getRandomColor(darkColors)
   const randomDark2 = getRandomColor(darkColors)
 
+  const splitShimmer = (phrase) => {
+    return phrase.split('').map((letter, i) => {
+      const randomColor = getRandomColor(colors)
+      return (
+        <span key={i}>
+          <span className='split-span-letter' >
+            {letter}
+          </span>
+          <style jsx>{`
+            .split-span-letter {
+              animation: colorFadeRow 2s infinite ease-in-out;
+              animation-delay: ${i * 30}ms;
+            }
+            @keyframes colorFadeRow {
+              from {
+                color: black;
+              } 50% {
+                color: ${randomColor};
+              } to {
+                color: black;
+              }
+            }
+          `}</style>
+        </span>
+      )
+    })
+  }
+
   return (
     <Layout colors={colors} title='About the Project'>
       {(allProjectInfoes.loading || allFadeColors.loading) ? (
@@ -46,7 +74,8 @@ const AboutPage = ({ url, allProjectInfoes, allFadeColors }) => {
             </div>
             <hr className='a' />
             <div className='description' dangerouslySetInnerHTML={{ __html: description }} />
-            <div className='sincerely'>Sincerely,</div>
+            <img className='price143' src={allProjectInfoes.allProjectInfoes[0].price143.url} />
+            <div className='sincerely'>{ splitShimmer('Sincerely,') }</div>
             <div className='names'>Wes & Jonathan</div>
           </div>
           <div className='shoplink'>
@@ -105,11 +134,12 @@ const AboutPage = ({ url, allProjectInfoes, allFadeColors }) => {
               text-align: center;
             }
             .sincerely {
-              font-family: var(--cursive-font)
+              font-family: var(--cursive-font);
+              font-size: 1.5em;
             }
             .names {
               font-family: var(--cursive-font);
-              font-size: 1.5em;
+              font-size: 3em;
               color: ${randomDark}
             }
             .shoplink {
@@ -126,8 +156,16 @@ const AboutPage = ({ url, allProjectInfoes, allFadeColors }) => {
               padding: .5em;
               margin-top: .5em;
             }
+            @media (max-width: 500px){
+              .price143 {
+                width: 75%;
+              }
+              .names {
+                font-size: 2em;
+              }
+            }
           `}</style>
-        </div>    
+        </div>
       )}
     </Layout>
   )

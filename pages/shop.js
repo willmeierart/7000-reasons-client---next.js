@@ -20,6 +20,34 @@ const ShopPage = ({ url: { pathname }, allFadeColors, allCheckoutPages }) => {
   const randomDark = getRandomColor(darkColors)
   const randomDark2 = getRandomColor(darkColors)
 
+  const splitShimmer = (phrase) => {
+    return phrase.split('').map((letter, i) => {
+      const randomColor = getRandomColor(darkColors)
+      return (
+        <span key={i}>
+          <span className='split-span-letter' >
+            {letter}
+          </span>
+          <style jsx>{`
+            .split-span-letter {
+              animation: colorFadeRow 4s infinite ease-in-out;
+              animation-delay: ${i * 100}ms;
+            }
+            @keyframes colorFadeRow {
+              from {
+                color: black;
+              } 50% {
+                color: ${randomColor};
+              } to {
+                color: black;
+              }
+            }
+          `}</style>
+        </span>
+      )
+    })
+  }
+
   const shopData = allCheckoutPages.allCheckoutPages ? allCheckoutPages.allCheckoutPages[0] : {}
 
   return (
@@ -46,22 +74,21 @@ const ShopPage = ({ url: { pathname }, allFadeColors, allCheckoutPages }) => {
           <PriceCounter colors={colors} price={shopData.priceofPainting} />
           <div className='content'>
             <div classname='intro'>
-              <h2>Thank you for your interest!</h2>
               <div dangerouslySetInnerHTML={{ __html: shopData.introParagraph }} />
             </div>
             {/* <hr /> */}
             <div className='instructions-section'>
+              <div className='fader-good'>
+                <span className='good'>{ splitShimmer('GOOD') }</span>
+                <ExamplesFader images={shopData.goodPortraitExamples} />
+              </div>
+              <div className='fader-bad'>
+                <span className='bad'>BAD</span>
+                <ExamplesFader images={shopData.badPortraitExamples} />
+              </div>
               <div className='instructions'>
                 <h1>INSTRUCTIONS:</h1>
                 <div dangerouslySetInnerHTML={{ __html: shopData.instructions }} />
-              </div>
-              <div className='fader-good'>
-                <ExamplesFader images={shopData.goodPortraitExamples} />
-                <span>GOOD</span>
-              </div>
-              <div className='fader-bad'>
-                <ExamplesFader images={shopData.badPortraitExamples} />
-                <span>BAD</span>
               </div>
             </div>
             <h1>LET'S DO THIS!</h1>
@@ -86,9 +113,9 @@ const ShopPage = ({ url: { pathname }, allFadeColors, allCheckoutPages }) => {
             }
             .instructions-section {
               display: grid;
-              grid-template-rows: 1fr 1fr;
+              grid-template-rows: 1fr auto;
               grid-template-columns: 3fr 1fr;
-              grid-template-areas: "instructions images1" "instructions images2";
+              grid-template-areas: "images1 images2" "instructions instructions";
               margin: 5vw 0;
             }
             h1 {
@@ -97,7 +124,7 @@ const ShopPage = ({ url: { pathname }, allFadeColors, allCheckoutPages }) => {
             .instructions {
               grid-area: instructions;
               text-align: justify;
-              padding-right: 3em;
+              padding-top: 3em;
               box-sizing:border-box;
               {/* border-right: 1px solid black; */}
             }
@@ -112,6 +139,9 @@ const ShopPage = ({ url: { pathname }, allFadeColors, allCheckoutPages }) => {
             }
             .fader-bad {
               grid-area: images2;
+            }
+            .good, .bad {
+              font-size: 8vw;
             }
             .paypal-wrapper {
               display: flex;

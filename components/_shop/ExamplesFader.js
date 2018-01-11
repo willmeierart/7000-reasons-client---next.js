@@ -32,9 +32,14 @@ export default class ExamplesFader extends Component {
         .outer-wrapper {
           position: relative;
           overflow: hidden;
+          width: 38vw;
+          height: 38vw;
+          margin: 1vw;
         }
         img {
           animation: fade-imgs 2s linear;
+          width: 38vw;
+          height: 38vw;
         }
         @keyframes fade-imgs {
           from {

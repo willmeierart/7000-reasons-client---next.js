@@ -14,7 +14,7 @@ export default class Title extends Component {
   //   this.setState () {() => ({ origColor: })}
   // }
   titleSplitta () {
-    const title = '7000 Reasons'
+    const title = '7000 reasons'
     return title.split('').map((letter, i) => {
       return (
         <span key={i} className='titleLetter' >
@@ -59,8 +59,8 @@ export default class Title extends Component {
         <Link href='/' ><a>
           {this.titleSplitta()}
           <style jsx>{`
-              width:80vw;
-              margin:4vw 10vw 2vw 10vw;
+              width:50vw;
+              margin:1vw 25vw 0 25vw;
               display:flex; justify-content:space-around; align-items: center;
             a {
               text-decoration: none;

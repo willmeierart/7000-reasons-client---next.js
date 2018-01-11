@@ -51,7 +51,8 @@ const Layout = ({ children, title, colors, allFontses, allShiftingMessages }) =>
         body {
           margin:0!important;
           width:100vw;
-          font-family: var(--body-font)
+          font-family: var(--body-font);
+          background-color: #fffcf2;
         }
         .loader-hidden {display:none;}
         .loader-active {

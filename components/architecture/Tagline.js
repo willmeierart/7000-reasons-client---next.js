@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { getRandomColor } from '../../lib/_utils'
 import ReasonTo from './ReasonTo'
 
@@ -34,22 +35,18 @@ const Tagline = ({ colors, reasons }) => {
     <div>
       <div className='container'>
         <ReasonTo reasons={reasons} colors={colors} />
-        <div className='prepo'>by</div>
         <div className='names'>
           <div className='name'>
-            <a href='https://www.wesmagyar.com/' target='_blank'>
+            <Link prefetch href='/artist?slug=wes'><a>
               { splitShimmer('Wes Magyar') }
-            </a>
+            </a></Link>
           </div>
           <span>&nbsp; &  &nbsp;</span>
           <div className='name'>
-            <a href='http://www.jonathansaiz.com/' target='_blank'>
+            <Link prefetch href='/artist?slug=jonathan'><a>
               { splitShimmer('Jonathan  Saiz') }
-            </a>
+            </a></Link>
           </div>
-          {/* <div className='name'>Jonathan Saiz</div>
-          <div className='and'>&nbsp; & &nbsp;</div>
-          <div className='name'>Wes Magyar</div> */}
         </div>
       </div>
       <style jsx>{`
@@ -62,7 +59,7 @@ const Tagline = ({ colors, reasons }) => {
         }
         .container {
           width: 60vw;
-          margin: 0 20vw 2em 20vw;
+          margin: 0 20vw 1em 20vw;
           display: flex;
           flex-direction: column;
           justify-content: center;

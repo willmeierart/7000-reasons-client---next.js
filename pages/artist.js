@@ -155,7 +155,9 @@ const ArtistPage = ({ url, allArtists, allFadeColors }) => {
               </div>
             </div>
             <div className='work-images'>
-              <div className='website' onMouseOver={(e) => colorShimma(e)}>{ siteSplitta(activeArtist.website.replace(/(https?:\/\/www\.|\/)/g, '')) }</div>
+              <div className='website' onMouseOver={(e) => colorShimma(e)}>
+                <a href='activeArtist.website' target='_blank'>{ siteSplitta(activeArtist.website.replace(/(https?:\/\/www\.|\/)/g, '')) }</a>
+              </div>
               <div className='work-img-wrapper'>
                 <div className='img-screen' /><img src={activeArtist.workPhotos[0].url} />
               </div>
@@ -243,11 +245,10 @@ const ArtistPage = ({ url, allArtists, allFadeColors }) => {
               overflow:hidden;
               width:30vw;
               height:30vw;
-              margin: 2vw 0;
+              margin: 2vw .5vw;
             }
             .img-screen {
               position: absolute;
-              width: 100%;
               height:100%;
               opacity: .5;
               transition: opacity 1s ease-in-out;
@@ -267,7 +268,7 @@ const ArtistPage = ({ url, allArtists, allFadeColors }) => {
             .work-images { 
               position: relative;
               display: flex;
-              width:100%;
+              width:60vw;
               margin-top:2vw;
              }
             .work-img-wrapper {
@@ -291,22 +292,26 @@ const ArtistPage = ({ url, allArtists, allFadeColors }) => {
               width: 100%;
               height: 100%;
               font-weight: bold;
-              color: black;
+              color: white;
               {/* background: rgba(0,0,0,.5);                             */}
               {/* -webkit-text-fill-color: transparent;              
               -webkit-background-clip: text; */}
               z-index: 3;
-              mix-blend-mode: overlay;
+              {/* mix-blend-mode: overlay; */}
               {/* background: none; */}
             }
             .website:hover {
-              mix-blend-mode: initial;
-              transition: .5s mix-blend-mode;
+              {/* mix-blend-mode: initial; */}
+              {/* transition: .5s mix-blend-mode; */}
             }
             @media(max-width: 500px) {
               .website {
                 font-size: .75em;
               }
+            }
+            a {
+              text-decoration: none;
+              color: white;
             }
           `}</style>
         </div>
