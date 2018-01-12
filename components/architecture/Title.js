@@ -3,16 +3,9 @@ import Link from 'next/link'
 import { fadeColors, forEachChild } from '../../lib/_utils'
 
 export default class Title extends Component {
-  // constructor (props) {
-  //   super(props)
-  //   this.state = { origColor:'black' }
-  // }
   static async getInitialProps ({ colors }) {
     return colors
   }
-  // componentDidMount () {
-  //   this.setState () {() => ({ origColor: })}
-  // }
   titleSplitta () {
     const title = '7000 reasons'
     return title.split('').map((letter, i) => {
@@ -35,16 +28,6 @@ export default class Title extends Component {
         </span>
       )
     })
-    // const title = '7000 Reasons'
-    // const styles = `
-    //   .titleLetter {
-    //     pointer-events: none;
-    //     font-family: 'Fredoka One', cursive;
-    //     transition: color 1s ease;
-    //     font-size: 3em;
-    //   }
-    // `
-    // return splitToSpans(title, styles)
   }
   colorShimma (e) {
     const { colors } = this.props
@@ -57,7 +40,7 @@ export default class Title extends Component {
     return (
       <div className='wholeTitle' onMouseOver={e => this.colorShimma(e)}>
         <Link href='/' ><a>
-          {this.titleSplitta()}
+          { this.titleSplitta() }
           <style jsx>{`
               width:50vw;
               margin:1vw 25vw 0 25vw;

@@ -1,15 +1,12 @@
 import { graphql, compose } from 'react-apollo'
 import Loader from 'react-loaders'
 import Head from 'next/head'
-
 import withData from '../lib/withData'
 import { allFadeColors, allCheckoutPages } from '../lib/queries'
-import { formatColors, checkAllQueriesError, getRandomColor } from '../lib/_utils'
-
+import { formatColors, checkAllQueriesError, getRandomColor, forEachChild, fadeColors } from '../lib/_utils'
 import Layout from '../components/architecture/Layout'
 import PriceCounter from '../components/_shop/PriceCounter'
 import ExamplesFader from '../components/_shop/ExamplesFader'
-// import CheckoutForm from '../components/_shop/CheckoutForm'
 
 const ShopPage = ({ url: { pathname }, allFadeColors, allCheckoutPages }) => {
   const queries = ['allCheckoutPages', 'allFadeColors']
@@ -18,9 +15,8 @@ const ShopPage = ({ url: { pathname }, allFadeColors, allCheckoutPages }) => {
   const colors = formatColors(allFadeColors.allFadeColors)
   const darkColors = colors.filter((color) => !color.light)
   const randomDark = getRandomColor(darkColors)
-  const randomDark2 = getRandomColor(darkColors)
 
-  const splitShimmer = (phrase) => {
+  const splitShimmer = phrase => {
     return phrase.split('').map((letter, i) => {
       const randomColor = getRandomColor(darkColors)
       return (
@@ -45,6 +41,19 @@ const ShopPage = ({ url: { pathname }, allFadeColors, allCheckoutPages }) => {
           `}</style>
         </span>
       )
+    })
+  }
+  const splitta = wd => {
+    return wd.split('').map((letter, i) => {
+      return (
+        <span key={i} className='titleLetter' style={{ pointerEvents: 'none' }}>{ letter }</span>
+      )
+    })
+  }
+  const colorShimma = e => {
+    const letters = e.target.children
+    forEachChild(letters, (letter) => {
+      fadeColors(letter, colors, 600)
     })
   }
 
@@ -73,7 +82,7 @@ const ShopPage = ({ url: { pathname }, allFadeColors, allCheckoutPages }) => {
         <div className='outer-container'>
           <PriceCounter colors={colors} price={shopData.priceofPainting} />
           <div className='content'>
-            <div classname='intro'>
+            <div className='intro'>
               <div dangerouslySetInnerHTML={{ __html: shopData.introParagraph }} />
             </div>
             {/* <hr /> */}
@@ -91,9 +100,14 @@ const ShopPage = ({ url: { pathname }, allFadeColors, allCheckoutPages }) => {
                 <div dangerouslySetInnerHTML={{ __html: shopData.instructions }} />
               </div>
             </div>
-            <h1>LET'S DO THIS!</h1>
             <div className='paypal-wrapper'>
-              <img src='/static/paypal.png' />
+              <form action='https://www.paypal.com/cgi-bin/webscr' method='post' target='_top'>
+                {/* <h1 onMouseOver={(e) => colorShimma(e)}>{splitta('LET\'S DO THIS!')}</h1> */}
+                <input type='hidden' name='cmd' value='_s-xclick' />
+                <input type='hidden' name='hosted_button_id' value='DYSPDM25R2MUY' />
+                <input type='image' src='https://www.paypalobjects.com/en_US/i/btn/btn_paynowCC_LG.gif' border='0' name='submit' alt='PayPal - The safer, easier way to pay online!' />
+                <img alt='' border='0' src='https://www.paypalobjects.com/en_US/i/scr/pixel.gif' width='1' height='1' />
+              </form>
             </div>
             {/* <CheckoutForm colors={colors} /> */}
           </div>
@@ -145,8 +159,13 @@ const ShopPage = ({ url: { pathname }, allFadeColors, allCheckoutPages }) => {
             }
             .paypal-wrapper {
               display: flex;
+              flex-direction: column;
               width: 80vw;
               justify-content: center;
+              margin-bottom: 1em;
+            }
+            form, input, form img {
+              cursor: pointer;
             }
             @media(max-width:600px){
               .instructions-section {

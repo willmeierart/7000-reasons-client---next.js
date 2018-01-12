@@ -10,7 +10,6 @@ const PriceCounter = ({ price, colors }) => {
 
   const formatPrice = `$${price}`
 
-  console.log(darkColors)
   return (
     <div className='outerOuter'>
       <div className='outerWrapper'>
