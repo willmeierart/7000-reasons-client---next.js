@@ -1,43 +1,33 @@
-import { Component } from 'react'
 import { graphql, compose } from 'react-apollo'
 import Loader from 'react-loaders'
-import raf from 'raf'
+import Confetti from 'react-confetti'
+import Link from 'next/link'
 import Head from 'next/head'
 import withData from '../lib/withData'
 import { allFadeColors, allCheckoutPages, allCountdowns } from '../lib/queries'
 import { formatColors, checkAllQueriesError, getRandomColor, forEachChild, fadeColors, binder } from '../lib/_utils'
 import Layout from '../components/architecture/Layout'
+import Counter from '../components/_index/Counter'
 
-class ShopPage extends Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      colors: [],
-      darkColors: [],
-      randomDark: ''
-    }
-  }
-  componentDidMount () {
-    const { allFadeColors: { allFadeColors } } = this.props
-    const queries = ['allCheckoutPages', 'allFadeColors', 'allCountdowns']
-    const colors = formatColors(allFadeColors)
-    const darkColors = colors.filter((color) => !color.light)
-    const randomDark = getRandomColor(darkColors)
-    checkAllQueriesError(queries)
-    this.setState({
-      colors,
-      darkColors,
-      randomDark
-    })
-    const { canvas } = this.refs
-  }  
-  splitShimmer (phrase) {
-    const { darkColors } = this.state
+const Confirmation = ({ allFadeColors, allCheckoutPages, allCountdowns }) => {
+  const queries = ['allCheckoutPages', 'allFadeColors', 'allCountdowns']
+  checkAllQueriesError(queries)
+
+  const faderColors = allFadeColors.allFadeColors
+  const colors = formatColors(faderColors)
+  const darkColors = colors.filter((color) => !color.light)
+  const lightColors = colors.filter((color) => color.light)
+  const randomDark = getRandomColor(darkColors)
+  const colorNames = colors.map(color => color.rgba)
+  const width = typeof window !== 'undefined' ? window.innerWidth : 2000
+  const height = typeof window !== 'undefined' ? window.innerHeight : 3000
+
+  const splitShimmer = (phrase) => {
     return phrase.split('').map((letter, i) => {
-      const randomColor = getRandomColor(darkColors)
+      const randomColor = getRandomColor(darkColors) 
       return (
         <span key={i}>
-          <span className='split-span-letter' >
+          <span className='split-span-letter'>
             {letter}
           </span>
           <style jsx>{`
@@ -59,64 +49,155 @@ class ShopPage extends Component {
       )
     })
   }
-  splitta (wd) {
+  const splitta = (wd) => {
     return wd.split('').map((letter, i) => <span key={i} className='titleLetter' style={{ pointerEvents: 'none' }}>{ letter }</span>)
   }
-  colorShimma (e) {
+  const colorShimma = (e) => {
     const { colors } = this.state
     const letters = e.target.children
     forEachChild(letters, (letter) => {
       fadeColors(letter, colors, 600)
     })
   }
-  render () {
-    const { allCheckoutPages, allFadeColors, allCountdowns } = this.props
-    const { colors } = this.state
-    return (
-      <Layout colors={colors} title='Confirmation'>
-        {(allCheckoutPages.loading || allFadeColors.loading || allCountdowns.loading) ? (
-          <div className='wrapper'>
-            <Loader className='loader' type='line-spin-fade-loader' active />
-            <style jsx>{`
-              .wrapper {
-                width:100%;
-                height:100%;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-              }
-              .loader {
-                width:10vw;
-                height:10vw;
-              }
-            `}</style>
-          </div>
-        ) : (
-          <div className='outer-container'>
-            <div className='inner-container'>
-              <canvas ref={canvas => { this.canvas = canvas }} />
+
+  return (
+    <Layout colors={colors} title='Confirmation'>
+      {(allCheckoutPages.loading || allFadeColors.loading || allCountdowns.loading) ? (
+        <div className='wrapper'>
+          <Loader className='loader' type='line-spin-fade-loader' active />
+          <style jsx>{`
+            .wrapper {
+              width:100%;
+              height:100%;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
+            .loader {
+              width:10vw;
+              height:10vw;
+            }
+          `}</style>
+        </div>
+      ) : (
+        <div className='conf-outer-container'>
+          <div className='conf-inner-container'>
+            <div className='conf-thank-you'>{ splitShimmer('THANK YOU!!!') }</div>
+            <div className='conf-plaintext'>{ splitShimmer('and') }</div>
+            <div className='conf-congratulations'>{ splitShimmer('CONGRATULATIONS!') }</div>
+            <div className='conf-plaintext'>{ splitShimmer('you are reason number') }</div>
+            <div className='conf-counter' >
+              <Counter number={`${~~allCountdowns.allCountdowns[0].remaining + 1}`} colors={colors} className='conf-counter' />
             </div>
-            <style jsx>{`
-              .outer-container {
-                overflow: hidden;
-                position: absolute;
-                z-index: 20;
-                top: 0;
-                left: 0;
-                width: 100vw;
-                height: 100vh;
-                background: var(--background-color);
-              }
-              .inner-container {
-                width: 100%;
-                height: 100%;
-              }
-            `}</style>
+            <div className='conf-instructions'>
+              <div>remember to send 1-3 GOOD images to</div>
+              <div className='conf-email'><Link href='mailto:7000reasonsproject@gmail.com' target='_blank'><a>{ splitShimmer('7000reasonsproject@gmail.com') }</a></Link></div>
+              <div>(the sooner we get them, the sooner we can get started on your painting)</div>
+              <div>if you have any questions, please refer back to <Link prefetch href='/shop'><a><b>{ splitShimmer('the instructions on our checkout page') }</b></a></Link></div>
+            </div>
           </div>
-        )}
-      </Layout>
-    )
-  }
+          <Confetti width={width} height={height} confettiSource={{ x: 0, y: 0, w: 2000, h: 0 }} opacity={0.25} />
+          <style jsx global>{`
+            .conf-outer-container {
+              overflow: hidden;
+              position: absolute;
+              z-index: 20;
+              top: 0;
+              left: 0;
+              width: 100vw;
+              height: 100vh;
+              background: var(--background-color);
+            }
+            .conf-inner-container {
+              width: 100vw;
+              height: 90vh;
+              position: absolute;
+              top: 10vh;
+              left: 0;
+              display: flex;
+              justify-content: space-around;
+              align-items: center;
+              flex-direction: column;
+              z-index: 25;
+            }
+            .conf-thank-you {
+              font-family: var(--title-font);
+              font-size: 3em;
+              width: 50vw;
+              display: flex;
+              justify-content: space-between;
+            }
+            .conf-congratulations {
+              font-family: var(--cursive-font);
+              font-size: 2em;
+              width: 40vw;
+              display: flex;
+              justify-content: space-between;
+            }
+            .conf-plaintext {
+              font-family: var(--cursive-font);                
+            }
+            .conf-counter {
+              animation: shine 4s infinite ease-in-out;
+              box-shadow: 0 0 50px ${getRandomColor(lightColors)};
+              box-sizing: content-box;
+              display: flex;
+              jusify-content: center;
+              align-items: center;
+              flex-grow: 0;
+              flex-shrink: 1;
+              height: 0;
+              margin-top: 10vh;
+            }
+            .conf-instructions {
+              text-align: center;
+              display: flex;
+              flex-direction: column;
+              justify-content: space-around;
+              align-items: center;
+              height: 20vh;
+              margin-top: 10vh;
+              padding: 5vw;
+            }
+            .conf-email {
+              font-family: var(--title-font);
+              font-size: 2em;
+            }
+            .conf-instructions a {
+              text-decoration: none;
+              color: inherit;
+            }
+            @keyframes shine {
+              from {
+                box-shadow: 0 0 ${~~(Math.random() * 100 + 40)}px ${~~(Math.random() * 50 + 20)}px ${getRandomColor(lightColors)};
+              } 20% {
+                box-shadow: 0 0 ${~~(Math.random() * 100 + 40)}px ${~~(Math.random() * 50 + 20)}px ${getRandomColor(lightColors)};
+              } 40% {
+                box-shadow: 0 0 ${~~(Math.random() * 100 + 40)}px ${~~(Math.random() * 50 + 20)}px ${getRandomColor(lightColors)};
+              } 60% {
+                box-shadow: 0 0 ${~~(Math.random() * 100 + 40)}px ${~~(Math.random() * 50 + 20)}px ${getRandomColor(lightColors)};
+              } 80% {
+                box-shadow: 0 0 ${~~(Math.random() * 100 + 40)}px ${~~(Math.random() * 50 + 20)}px ${getRandomColor(lightColors)};
+              } to {
+                box-shadow: 0 0 ${~~(Math.random() * 100 + 40)}px ${~~(Math.random() * 50 + 20)}px ${getRandomColor(lightColors)}; 
+              }
+            }
+            @media(max-width: 500px) {
+              .conf-thank-you {
+                font-size: 2em;
+              }
+              .conf-congratulations {
+                font-size: 1em;
+              }
+              .conf-email {
+                font-size: 1.5em;
+              }
+            }
+          `}</style>
+        </div>
+      )}
+    </Layout>
+  )
 }
 
 export default withData(
@@ -124,5 +205,5 @@ export default withData(
     graphql(allCheckoutPages, { name: 'allCheckoutPages' }),
     graphql(allFadeColors, { name: 'allFadeColors' }),
     graphql(allCountdowns, { name: 'allCountdowns' })
-  )(ShopPage)
+  )(Confirmation)
 )

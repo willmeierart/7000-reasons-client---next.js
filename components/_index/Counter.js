@@ -2,7 +2,7 @@ import { getRandomColor } from '../../lib/_utils'
 
 const Counter = ({ number, colors }) => {
   const darkColors = colors.filter((color) => !color.light)
-  const lightColors = colors.filter((color) => color.light)  
+  const lightColors = colors.filter((color) => color.light)
   const randColor = getRandomColor(darkColors)
   const randColor2 = getRandomColor(lightColors).replace(',1)', ',.5)')
   const randColor3 = getRandomColor(colors).replace(',1)', ',.5)')
