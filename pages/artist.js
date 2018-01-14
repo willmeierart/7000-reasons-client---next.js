@@ -77,6 +77,7 @@ const ArtistPage = ({ url, allArtists, allFadeColors }) => {
               font-family: var(--cursive-font);
               text-decoration: none;
               color: black;
+              white-space: nowrap;
             }
             a:hover {
               color: ${randomDark2}
@@ -87,6 +88,11 @@ const ArtistPage = ({ url, allArtists, allFadeColors }) => {
               color: ${randomDark};     
               {/* text-decoration:underline;          */}
             }
+            @media(max-width:500px){
+              a {
+                font-size: .75em;
+              }
+            }
           `}</style>
         </div>
       )
@@ -96,13 +102,12 @@ const ArtistPage = ({ url, allArtists, allFadeColors }) => {
   // console.log(activeArtist)
   // const { bio, bodiesOfWork, personalPhotos } = activeArtist
 
-  const splitProBio = wordSplitta(activeArtist.professionalBio.replace(/(<([^>]+)>)/ig, '').replace(/&nbsp;/g, ' ')) || ''
-  const splitPersonalBio = wordSplitta(activeArtist.personalBio.replace(/(<([^>]+)>)/ig, '').replace(/&nbsp;/g, ' ')) || ''
+  const splitProBio = activeArtist.professionalBio ? wordSplitta(activeArtist.professionalBio.replace(/(<([^>]+)>)/ig, '').replace(/&nbsp;/g, ' ')) : ''
+  const splitPersonalBio = activeArtist.personalBio ? wordSplitta(activeArtist.personalBio.replace(/(<([^>]+)>)/ig, '').replace(/&nbsp;/g, ' ')) : ''
   // const splitProBio = ''
   // const splitPersonalBio = ''
 
-
-  console.log(activeArtist)
+  // console.log(activeArtist)
 
   return (
     <Layout colors={colors} title='About the Project'>
@@ -150,7 +155,9 @@ const ArtistPage = ({ url, allArtists, allFadeColors }) => {
               </div>
             </div>
             <div className='work-images'>
-              <div className='website' onMouseOver={(e) => colorShimma(e)}>{ siteSplitta(activeArtist.website.replace(/(http|s:\/\/www\.|\/)/g, '')) }</div>
+              <div className='website' onMouseOver={(e) => colorShimma(e)}>
+                <a href='activeArtist.website' target='_blank'>{ siteSplitta(activeArtist.website.replace(/(https?:\/\/www\.|\/)/g, '')) }</a>
+              </div>
               <div className='work-img-wrapper'>
                 <div className='img-screen' /><img src={activeArtist.workPhotos[0].url} />
               </div>
@@ -222,13 +229,13 @@ const ArtistPage = ({ url, allArtists, allFadeColors }) => {
               width: 60vw;
               margin: 2vw;
               margin-top: 4vw;
-              filter: sepia(100%);
+              filter: ${activeArtist.slug === 'wes' ? 'sepia(100%) hue-rotate(180deg)' : 'sepia(100%) hue-rotate(90deg)'};
               box-shadow: 0 0 30px ${randomDark};
               transition: filter 1s ease-out;
               border-radius: 2px;           
             }
             .header-img img:hover {
-              filter: sepia(0%);
+              filter: ${activeArtist.slug === 'wes' ? 'sepia(0%) hue-rotate(360deg)' : 'sepia(0%) hue-rotate(0deg)'};
             }
             .personal-bio-wrapper {
               {/* padding-top: 6vw; */}
@@ -238,11 +245,10 @@ const ArtistPage = ({ url, allArtists, allFadeColors }) => {
               overflow:hidden;
               width:30vw;
               height:30vw;
-              margin: 2vw 0;
+              margin: 2vw .5vw;
             }
             .img-screen {
               position: absolute;
-              width: 100%;
               height:100%;
               opacity: .5;
               transition: opacity 1s ease-in-out;
@@ -262,7 +268,8 @@ const ArtistPage = ({ url, allArtists, allFadeColors }) => {
             .work-images { 
               position: relative;
               display: flex;
-              width:100%;
+              width:60vw;
+              margin-top:2vw;
              }
             .work-img-wrapper {
               position:relative;
@@ -285,12 +292,26 @@ const ArtistPage = ({ url, allArtists, allFadeColors }) => {
               width: 100%;
               height: 100%;
               font-weight: bold;
-              color: black;
+              color: white;
               {/* background: rgba(0,0,0,.5);                             */}
               {/* -webkit-text-fill-color: transparent;              
               -webkit-background-clip: text; */}
               z-index: 3;
+              {/* mix-blend-mode: overlay; */}
               {/* background: none; */}
+            }
+            .website:hover {
+              {/* mix-blend-mode: initial; */}
+              {/* transition: .5s mix-blend-mode; */}
+            }
+            @media(max-width: 500px) {
+              .website {
+                font-size: .75em;
+              }
+            }
+            a {
+              text-decoration: none;
+              color: white;
             }
           `}</style>
         </div>

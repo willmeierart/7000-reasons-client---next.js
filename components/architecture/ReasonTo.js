@@ -19,7 +19,7 @@ export default class ReasonTo extends Component {
       this.setState(() => (
         {
           currentReason: reasons[i].headline,
-          randomColor: (darkColors[i].color || color),
+          randomColor: color,
           randomInterval: randomInt,
           number: Math.floor(Math.random() * 7000)
         }
@@ -53,9 +53,15 @@ export default class ReasonTo extends Component {
           .reason {
             color: ${this.state.randomColor}
             text-align:center;
-            font-size:1.25em;
+            font-size:1.5em;
             opacity: 0;
             animation: fade-reasons ${this.state.randomInterval / 1000}s linear;
+            white-space: nowrap;
+          }
+          @media (max-width: 500px){
+            .reason{
+              font-size: 1em;
+            }
           }
           @keyframes fade-reasons {
             from {

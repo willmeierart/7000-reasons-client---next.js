@@ -23,6 +23,10 @@ app.prepare()
       return app.render(req, res, '/shop')
     })
 
+    server.get('/confirmation', (req, res) => {
+      return app.render(req, res, '/confirmation')
+    })
+
     server.get('*', (req, res) => {
       return handle(req, res)
       // return app.render(req, res, '/', req.query)

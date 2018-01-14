@@ -41,6 +41,7 @@ const Layout = ({ children, title, colors, allFontses, allShiftingMessages }) =>
           --title-font: ${fonts[0].headerFont}, cursive;
           --cursive-font: ${fonts[0].secondaryDisplayFont}, cursive;
           --body-font: ${fonts[0].bodyFont}, sans-serif;
+          --background-color: #fffcf2;
         }
         hr{
           width:90vw;
@@ -51,7 +52,8 @@ const Layout = ({ children, title, colors, allFontses, allShiftingMessages }) =>
         body {
           margin:0!important;
           width:100vw;
-          font-family: var(--body-font)
+          font-family: var(--body-font);
+          background-color: var(--background-color);
         }
         .loader-hidden {display:none;}
         .loader-active {

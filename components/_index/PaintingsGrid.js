@@ -1,10 +1,21 @@
 import React from 'react'
+import shuffle from 'shuffle-array'
 import Painting from './Painting'
 
-const PaintingsGrid = (props) => {
+const PaintingsGrid = ({ paintings, colors }) => {
+  // const shuffleArr = (arr) => {
+  //   for (let i = arr.length - 1; i > 0; i--) {
+  //     let j = Math.floor(Math.random() * (i + 1))
+  //     let temp = arr[i]
+  //     arr[i] = arr[j]
+  //     arr[j] = temp
+  //   }
+  //   return arr
+  // }
+  const keys = shuffle(Object.keys(paintings))
+  const shuffledPaintings = keys.map(key => paintings[key])
   const renderGrid = () => {
-    const { paintings, colors } = props
-    return paintings.map(painting => {
+    return shuffledPaintings.map(painting => {
       return (
         <div key={painting.number} className='painting-wrapper'>
           <Painting painting={painting} colors={colors} />

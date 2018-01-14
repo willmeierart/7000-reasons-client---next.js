@@ -14,10 +14,8 @@ export default class ExamplesFader extends Component {
     const { images } = this.props
     let i = 0
     return setInterval(() => {
-      const src = images[i] ? images[i].url : ''
+      const src = images[i] ? images[i].url : ''  
       i < images.length - 1 ? i++ : i = 0
-      console.log(i)
-      console.log(src)
       this.setState({ src: src })
     }, 2000)
     // clearInterval(interval)
@@ -34,9 +32,14 @@ export default class ExamplesFader extends Component {
         .outer-wrapper {
           position: relative;
           overflow: hidden;
+          width: 38vw;
+          height: 38vw;
+          margin: 1vw;
         }
         img {
           animation: fade-imgs 2s linear;
+          width: 38vw;
+          height: 38vw;
         }
         @keyframes fade-imgs {
           from {

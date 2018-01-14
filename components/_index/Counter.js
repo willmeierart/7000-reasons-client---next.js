@@ -2,13 +2,13 @@ import { getRandomColor } from '../../lib/_utils'
 
 const Counter = ({ number, colors }) => {
   const darkColors = colors.filter((color) => !color.light)
-  const lightColors = colors.filter((color) => color.light)  
+  const lightColors = colors.filter((color) => color.light)
   const randColor = getRandomColor(darkColors)
   const randColor2 = getRandomColor(lightColors).replace(',1)', ',.5)')
   const randColor3 = getRandomColor(colors).replace(',1)', ',.5)')
   const randColor4 = getRandomColor(darkColors)
-  
-  console.log(darkColors)
+
+  // console.log(darkColors)
   return (
     <div className='outerOuter'>
       <div className='outerWrapper'>
@@ -34,6 +34,8 @@ const Counter = ({ number, colors }) => {
           display: flex;
           justify-content: center;
           align-items: center;
+          margin-bottom: 0;
+          margin-top: -1em;
         }
         .innerWrapper, .outerWrapper, .eachNum {
           padding:5px;
@@ -44,6 +46,7 @@ const Counter = ({ number, colors }) => {
         .eachNum {
           font-family: var(--title-font);
           display: inline-block;
+          font-size:2em;
           margin:1px;
           width:1em;
           text-align:center;
