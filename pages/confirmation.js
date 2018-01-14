@@ -138,7 +138,7 @@ const Confirmation = ({ allFadeColors, allCheckoutPages, allCountdowns }) => {
               font-family: var(--cursive-font);                
             }
             .conf-counter {
-              animation: shine 4s infinite ease-in-out;
+              animation: shine 2.5s infinite ease-in-out;
               box-shadow: 0 0 50px ${getRandomColor(lightColors)};
               box-sizing: content-box;
               display: flex;
