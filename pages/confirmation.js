@@ -84,13 +84,15 @@ const Confirmation = ({ allFadeColors, allCheckoutPages, allCountdowns }) => {
           <div className='conf-inner-container'>
             <div className='conf-thank-you'>{ splitShimmer('THANK YOU!!!') }</div>
             <div className='conf-plaintext'>{ splitShimmer('and') }</div>
-            <div className='conf-congratulations'>{ splitShimmer('CONGRATULATIONS!') }</div>
+            <div className='conf-congratulations'>{ splitShimmer('CONGRATULATIONS!!') }</div>
             <div className='conf-plaintext'>{ splitShimmer('you are reason number') }</div>
             <div className='conf-counter' >
               <Counter number={`${~~allCountdowns.allCountdowns[0].remaining + 1}`} colors={colors} className='conf-counter' />
             </div>
             <div className='conf-instructions'>
-              <div>remember to send 1-3 GOOD images to</div>
+              <div>your payment has been received!</div>
+              <div>make sure to check your email for confirmation</div>
+              <div>and then remember to send 1-3 GOOD images to</div>
               <div className='conf-email'><Link href='mailto:7000reasonsproject@gmail.com' target='_blank'><a>{ splitShimmer('7000reasonsproject@gmail.com') }</a></Link></div>
               <div>(the sooner we get them, the sooner we can get started on your painting)</div>
               <div>if you have any questions, please refer back to <Link prefetch href='/shop'><a><b>{ splitShimmer('the instructions on our checkout page') }</b></a></Link></div>
