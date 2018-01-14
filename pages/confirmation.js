@@ -85,7 +85,7 @@ const Confirmation = ({ allFadeColors, allCheckoutPages, allCountdowns }) => {
             <div className='conf-thank-you'>{ splitShimmer('THANK YOU!!!') }</div>
             <div className='conf-plaintext'>{ splitShimmer('and') }</div>
             <div className='conf-congratulations'>{ splitShimmer('CONGRATULATIONS!!') }</div>
-            <div className='conf-plaintext'>{ splitShimmer('you are reason number') }</div>
+            <div className='conf-you-are'>{ splitShimmer('you are reason number:') }</div>
             <div className='conf-counter' >
               <Counter number={`${~~allCountdowns.allCountdowns[0].remaining + 1}`} colors={colors} className='conf-counter' />
             </div>
@@ -136,8 +136,9 @@ const Confirmation = ({ allFadeColors, allCheckoutPages, allCountdowns }) => {
               display: flex;
               justify-content: space-between;
             }
-            .conf-plaintext {
-              font-family: var(--cursive-font);                
+            .conf-you-are {
+              font-family: var(--cursive-font);      
+              font-size: 1.25em;          
             }
             .conf-counter {
               animation: shine 2.5s infinite ease-in-out;
