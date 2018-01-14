@@ -1,6 +1,6 @@
 import { getRandomColor } from '../../lib/_utils'
 
-const Counter = ({ number, colors }) => {
+const PriceCounter = ({ price, colors }) => {
   const darkColors = colors.filter((color) => !color.light)
   const lightColors = colors.filter((color) => color.light)
   const randColor = getRandomColor(darkColors)
@@ -8,20 +8,21 @@ const Counter = ({ number, colors }) => {
   const randColor3 = getRandomColor(colors).replace(',1)', ',.5)')
   const randColor4 = getRandomColor(darkColors)
 
-  // console.log(darkColors)
+  const formatPrice = `$${price}`
+
   return (
     <div className='outerOuter'>
       <div className='outerWrapper'>
         <div className='innerWrapper'>
           <div>{
-            number.split('').map((num, i) => {
-              const thisNum = i === number.length - 1 ? (
+            formatPrice.toString().split('').map((num, i) => {
+              const thisNum = i === formatPrice.length - 1 ? (
                 <div key={i} className='eachNum'>
                   <div className='flipIn'>{num}</div>
                 </div>) : (<div key={i} className='eachNum'>
                   <div>{num}</div>
                 </div>
-              )
+                )
               return thisNum
             })
           }</div>
@@ -34,8 +35,6 @@ const Counter = ({ number, colors }) => {
           display: flex;
           justify-content: center;
           align-items: center;
-          margin-bottom: 0;
-          margin-top: -1em;
         }
         .innerWrapper, .outerWrapper, .eachNum {
           padding:5px;
@@ -45,8 +44,8 @@ const Counter = ({ number, colors }) => {
         }
         .eachNum {
           font-family: var(--title-font);
+          font-size: 3em;
           display: inline-block;
-          font-size:2em;
           margin:1px;
           width:1em;
           text-align:center;
@@ -81,4 +80,4 @@ const Counter = ({ number, colors }) => {
   )
 }
 
-export default Counter
+export default PriceCounter
