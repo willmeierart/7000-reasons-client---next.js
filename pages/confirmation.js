@@ -101,7 +101,6 @@ const Confirmation = ({ allFadeColors, allCheckoutPages, allCountdowns }) => {
           <Confetti width={width} height={height} confettiSource={{ x: 0, y: 0, w: 2000, h: 0 }} opacity={0.25} />
           <style jsx global>{`
             .conf-outer-container {
-              overflow: hidden;
               position: absolute;
               z-index: 20;
               top: 0;
