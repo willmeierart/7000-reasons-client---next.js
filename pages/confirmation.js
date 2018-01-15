@@ -160,7 +160,7 @@ const Confirmation = ({ allFadeColors, allCheckoutPages, allCountdowns }) => {
               align-items: center;
               height: 20vh;
               margin-top: 10vh;
-              padding: 5vw;
+              padding: 10vw;
             }
             .conf-email {
               font-family: var(--title-font);
@@ -188,12 +188,17 @@ const Confirmation = ({ allFadeColors, allCheckoutPages, allCountdowns }) => {
             @media(max-width: 500px) {
               .conf-thank-you {
                 font-size: 2em;
+                width: 90vw;
               }
               .conf-congratulations {
                 font-size: 1em;
+                width: 90vw;
+              }
+              .conf-instructions {
+                font-size: .8em;
               }
               .conf-email {
-                font-size: 1.5em;
+                font-size: 1.25em;
               }
             }
           `}</style>
