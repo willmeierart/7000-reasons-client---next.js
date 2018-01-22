@@ -274,7 +274,7 @@ const ArtistPage = ({ url, allArtists, allFadeColors }) => {
             .work-img-wrapper {
               position:relative;
               width: 25%;
-              height:25%;
+              {/* height:25%; */}
               overflow:hidden;
             }
             .work-img-wrapper img {
