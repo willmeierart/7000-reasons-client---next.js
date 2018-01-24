@@ -101,12 +101,32 @@ const ShopPage = ({ url: { pathname }, allFadeColors, allCheckoutPages }) => {
               </div>
             </div>
             <div className='paypal-wrapper'>
-              <form action='https://www.paypal.com/cgi-bin/webscr' method='post' target='_top'>
-                {/* <h1 onMouseOver={(e) => colorShimma(e)}>{splitta('LET\'S DO THIS!')}</h1> */}
-                <input type='hidden' name='cmd' value='_s-xclick' />
-                <input type='hidden' name='hosted_button_id' value='DYSPDM25R2MUY' />
-                <input type='image' src='https://www.paypalobjects.com/en_US/i/btn/btn_paynowCC_LG.gif' border='0' name='submit' alt='PayPal - The safer, easier way to pay online!' />
-                <img alt='' border='0' src='https://www.paypalobjects.com/en_US/i/scr/pixel.gif' width='1' height='1' />
+              <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                <input type="hidden" name="cmd" value="_s-xclick" />
+                <input type="hidden" name="hosted_button_id" value="DYSPDM25R2MUY" />
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <input type="hidden" name="on0" value="Quantity" />
+                        Quantity
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <select name="os0">
+                          <option value="1">1 $143.00 USD</option>
+                          <option value="2">2 $246.00 USD</option>
+                          <option value="3">3 $349.00 USD</option>
+                          <option value="4">4 $492.00 USD</option>
+                        </select>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <input type="hidden" name="currency_code" value="USD" />
+                <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_paynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" />
+                <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1"/>
               </form>
             </div>
             {/* <CheckoutForm colors={colors} /> */}
@@ -162,7 +182,14 @@ const ShopPage = ({ url: { pathname }, allFadeColors, allCheckoutPages }) => {
               flex-direction: column;
               width: 80vw;
               justify-content: center;
+              align-items: center;
               margin-bottom: 1em;
+            }
+            form {
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
             }
             form, input, form img {
               cursor: pointer;
