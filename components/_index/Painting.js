@@ -1,6 +1,7 @@
 const Painting = ({ painting, colors }) => {
   const randomIndex = Math.floor(Math.random() * colors.length)
   const randomColor = colors[randomIndex].rgba
+  console.log(painting);
   return (
     <div>
       <div className='img-wrapper'>

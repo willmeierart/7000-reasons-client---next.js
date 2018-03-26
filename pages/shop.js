@@ -116,9 +116,9 @@ const ShopPage = ({ url: { pathname }, allFadeColors, allCheckoutPages }) => {
                       <td>
                         <select name="os0">
                           <option value="1">1 $143.00 USD</option>
-                          <option value="2">2 $246.00 USD</option>
-                          <option value="3">3 $349.00 USD</option>
-                          <option value="4">4 $492.00 USD</option>
+                          <option value="2">2 $286.00 USD</option>
+                          <option value="3">3 $429.00 USD</option>
+                          <option value="4">4 $572.00 USD</option>
                         </select>
                       </td>
                     </tr>
