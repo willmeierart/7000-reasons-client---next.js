@@ -59,7 +59,7 @@ const ShopPage = ({ url: { pathname }, allFadeColors, allCheckoutPages }) => {
 
   const shopData = allCheckoutPages.allCheckoutPages ? allCheckoutPages.allCheckoutPages[0] : {}
 
-  const paypal = false
+  const paypal = true
 
   return (
     <Layout colors={colors} title='Shop'>
@@ -118,10 +118,10 @@ const ShopPage = ({ url: { pathname }, allFadeColors, allCheckoutPages }) => {
                       <tr>
                         <td>
                           <select name="os0">
-                            <option value="1">1 $143.00 USD</option>
-                            <option value="2">2 $286.00 USD</option>
-                            <option value="3">3 $429.00 USD</option>
-                            <option value="4">4 $572.00 USD</option>
+                            <option value="1">1 $163.94 USD</option>
+                            <option value="2">2 $317.88 USD</option>
+                            <option value="3">3 $471.82 USD</option>
+                            <option value="4">4 $625.76 USD</option>
                           </select>
                         </td>
                       </tr>
